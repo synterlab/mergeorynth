@@ -216,9 +216,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0A0010;font-family:
       <div class="hSection"><div class="hHead">Game Over</div><div class="hText">Coins stacked above the red line for 3 seconds ends the game. The timer bar at the top shows how close you are.</div></div>
       <div class="hSection"><div class="hHead">Orynth Ecosystem Chain</div>
         <div class="evoWrap">
-          <span class="evoPill">SEED</span><span class="evoPill">→ ORYN</span><span class="evoPill">→ ROVA</span>
-          <span class="evoPill">→ CNOTE</span><span class="evoPill">→ AURELIS</span><span class="evoPill">→ TERROVA</span>
-          <span class="evoPill">→ BLACKSITE</span><span class="evoPill">→ ORYNTH CORE ✸</span>
+          <span class="evoPill">SYLLA</span><span class="evoPill">→ AUI</span><span class="evoPill">→ BRAIN</span>
+          <span class="evoPill">→ AVO</span><span class="evoPill">→ MGT</span><span class="evoPill">→ MGN</span>
+          <span class="evoPill">→ MNSHFT</span><span class="evoPill">→ ORY</span><span class="evoPill">→ PIE α</span>
         </div>
       </div>
     </div>
@@ -232,33 +232,42 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0A0010;font-family:
 // COIN DATA  –  Orynth Ecosystem
 // ════════════════════════════════════════════════
 const COINS = [
-  // sorted: smallest → largest market cap in orynth.dev ecosystem
-  {id:0, name:'MANGAMINT',  ticker:'MMNT', pts:1,    r:15, c1:'#F3E8FF',c2:'#9333EA',c3:'#581C87',rim:'#C084FC',sym:'✦', lore:'Mint your manga on-chain.'},
-  {id:1, name:'IDLEN',      ticker:'IDLN', pts:2,    r:19, c1:'#CCFBF1',c2:'#0D9488',c3:'#134E4A',rim:'#2DD4BF',sym:'⚡',lore:'Monetize your AI idle time.'},
-  {id:2, name:'IDEAVO',     ticker:'IDVO', pts:4,    r:23, c1:'#DBEAFE',c2:'#2563EB',c3:'#1E3A8A',rim:'#93C5FD',sym:'I', lore:'Build apps with natural language.'},
-  {id:3, name:'ZAPDIGITS',  ticker:'ZAP',  pts:8,    r:27, c1:'#FEF9C3',c2:'#CA8A04',c3:'#713F12',rim:'#FDE047',sym:'Z', lore:'Marketing dashboards for agencies.'},
-  {id:4, name:'RELIQUEX',   ticker:'RQX',  pts:16,   r:31, c1:'#E0E7FF',c2:'#4338CA',c3:'#1E1B4B',rim:'#818CF8',sym:'R', lore:'Discover the next big thing in Web3.'},
-  {id:5, name:'SLOPE BOT',  ticker:'SLPB', pts:32,   r:35, c1:'#DCFCE7',c2:'#16A34A',c3:'#14532D',rim:'#4ADE80',sym:'S', lore:'Automated trading on Solana.'},
-  {id:6, name:'SYLLABY',    ticker:'SYLLA',pts:64,   r:40, c1:'#EDE9FE',c2:'#7C3AED',c3:'#4C1D95',rim:'#A78BFA',sym:'▶',lore:'AI studio for viral video creation.'},
-  {id:7, name:'AVATAR UI',  ticker:'AUI',  pts:128,  r:45, c1:'#E0F2FE',c2:'#0284C7',c3:'#0C4A6E',rim:'#38BDF8',sym:'A', lore:'Next-gen AI coexistence interface.'},
-  {id:8, name:'BRAIN',      ticker:'BRAIN',pts:256,  r:50, c1:'#FFF7ED',c2:'#EA580C',c3:'#7C2D12',rim:'#FB923C',sym:'B', lore:'Blockchain meets intelligence.'},
-  {id:9, name:'AVOCADO AI', ticker:'AVO',  pts:512,  r:55, c1:'#ECFDF5',c2:'#059669',c3:'#064E3B',rim:'#34D399',sym:'🥑',lore:'Ship client-ready ads in minutes.'},
-  {id:10,name:'MAGTAPP',    ticker:'MGT',  pts:1024, r:60, c1:'#FDF2F8',c2:'#DB2777',c3:'#831843',rim:'#F472B6',sym:'T', lore:'Borderless crypto payments for all.'},
-  {id:11,name:'MANGANOW',   ticker:'MGN',  pts:2048, r:65, c1:'#FFF1F2',c2:'#E11D48',c3:'#881337',rim:'#FB7185',sym:'M', lore:'Text to Manga in minutes.'},
-  {id:12,name:'MOONSHIFT',  ticker:'MNSHFT',pts:4096,r:70, c1:'#EEF2FF',c2:'#4F46E5',c3:'#312E81',rim:'#A5B4FC',sym:'🌙',lore:'Shift your trajectory to the moon.'},
-  {id:13,name:'ORYNTH',     ticker:'ORY',  pts:8192, r:76, c1:'#F5F3FF',c2:'#7C3AED',c3:'#3B0764',rim:'#DDA0FF',sym:'Ø', lore:'The launch platform for builders.'},
-  {id:14,name:'ALPIE',      ticker:'PIE',  pts:16384,r:82, c1:'#FEF3C7',c2:'#D97706',c3:'#6B2F00',rim:'#FFD700',sym:'α', lore:'The premier AI workspace. Peak of the ecosystem.'},
+  // Real orynth.dev ecosystem coins — sorted by DEX market cap (low → high)
+  {id:0, name:'SYLLABY',    ticker:'SYLLA',  pts:1,     r:17, c1:'#EDE9FE',c2:'#7C3AED',c3:'#4C1D95',rim:'#A78BFA',sym:'▶', lore:'AI studio for viral video creation.',       logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBnb475KaAt24FVmQgHrfpRbcxJuh1OBEYaoXj'},
+  {id:1, name:'AVATAR UI',  ticker:'AUI',    pts:3,     r:23, c1:'#E0F2FE',c2:'#0284C7',c3:'#0C4A6E',rim:'#38BDF8',sym:'A', lore:'Next-gen AI coexistence interface.',         logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBbEyrFimgMAuGmUHV8xw0FW1POd5LDChr2Ktk'},
+  {id:2, name:'BRAIN',      ticker:'BRAIN',  pts:9,     r:30, c1:'#FFF7ED',c2:'#EA580C',c3:'#7C2D12',rim:'#FB923C',sym:'B', lore:'Blockchain meets intelligence.',            logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBoA7EHkxeUiqQRAp2sLwdaWNx6gnD1MucybrY'},
+  {id:3, name:'AVOCADO AI', ticker:'AVO',    pts:27,    r:37, c1:'#ECFDF5',c2:'#059669',c3:'#064E3B',rim:'#34D399',sym:'V', lore:'Ship client-ready ads in minutes.',         logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWB6dZ4Xsr8wWqQDSOE37mPaGd4fjp6s9JvZRF1'},
+  {id:4, name:'MAGTAPP',    ticker:'MGT',    pts:81,    r:44, c1:'#FDF2F8',c2:'#DB2777',c3:'#831843',rim:'#F472B6',sym:'T', lore:'Borderless crypto payments for all.',       logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBS1Rdw0NMFS7Eq5vjAHtyd3OIe0aZV9biJh6m'},
+  {id:5, name:'MANGANOW',   ticker:'MGN',    pts:243,   r:51, c1:'#FFF1F2',c2:'#E11D48',c3:'#881337',rim:'#FB7185',sym:'M', lore:'Text to Manga in minutes.',                logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBlB4AgN8PJE8ItLCPMVxhbrKTmXUGsAyfpcHg'},
+  {id:6, name:'MOONSHIFT',  ticker:'MNSHFT', pts:729,   r:58, c1:'#EEF2FF',c2:'#4F46E5',c3:'#312E81',rim:'#818CF8',sym:'🌙',lore:'AI launch platform — ship fast, own all.',  logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBNeLPIjTLIE56GCS7DgZR2f4HqMmuYQT3AiPc'},
+  {id:7, name:'ORYNTH',     ticker:'ORY',    pts:2187,  r:66, c1:'#F5F3FF',c2:'#7C3AED',c3:'#3B0764',rim:'#DDA0FF',sym:'Ø', lore:'The launch platform for Solana builders.',  logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWB22BaScemObPj0kFxfX7Dz5qirLedyZpM4VCH'},
+  {id:8, name:'ALPIE',      ticker:'PIE',    pts:6561,  r:75, c1:'#FEF3C7',c2:'#D97706',c3:'#6B2F00',rim:'#FFD700',sym:'α', lore:'The premier AI workspace. Peak of the Orynth ecosystem.', logo:'https://vn10sepav2.ufs.sh/f/eGtxdOyn6OWBIxAGrQ2hovTV4OxUgtarS6X5celBsnQMmG8z'},
 ];
 
+// ════════════════════════════════════════════════
+// LOGO IMAGE CACHE  — preloaded before game starts
+// ════════════════════════════════════════════════
+const coinImages = {};
+function preloadCoinImages(cb) {
+  let done = 0, total = COINS.length;
+  COINS.forEach(C => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload  = () => { coinImages[C.id] = img; done++; if(done===total) cb(); };
+    img.onerror = () => {                          done++; if(done===total) cb(); };
+    img.src = C.logo;
+  });
+}
+
 const ACHS = [
-  {id:'first',  name:'First Merge',       desc:'Complete your first merge',     icon:'🔗'},
-  {id:'slpb',   name:'Slope Bot Found',   desc:'Unlock SLOPE BOT token',        icon:'📈'},
-  {id:'brain',  name:'Brain Power',       desc:'Reach BRAIN token',             icon:'🧠'},
-  {id:'moon',   name:'Moonshift!',        desc:'Discover MOONSHIFT',            icon:'🌙'},
-  {id:'orynth', name:'Orynth Reached',    desc:'Reach ORYNTH token',            icon:'Ø'},
-  {id:'alpie',  name:'ALPIE LEGEND!',     desc:'Create the legendary ALPIE',    icon:'α'},
-  {id:'m100',   name:'100 Merges',        desc:'100 total merges performed',    icon:'💯'},
-  {id:'m500',   name:'500 Merges',        desc:'500 total merges performed',    icon:'🏆'},
+  {id:'first',  name:'First Merge',       desc:'Complete your first merge',        icon:'🔗'},
+  {id:'brain',  name:'Brain Power',        desc:'Reach the BRAIN token',            icon:'🧠'},
+  {id:'mango',  name:'MangaNow Minted',    desc:'Unlock MANGANOW token',            icon:'🎌'},
+  {id:'moon',   name:'Moonshift!',         desc:'Discover MOONSHIFT token',          icon:'🌙'},
+  {id:'orynth', name:'Orynth Reached',     desc:'Reach ORYNTH — the platform coin', icon:'Ø'},
+  {id:'alpie',  name:'ALPIE LEGEND!',      desc:'Create the legendary ALPIE coin',  icon:'α'},
+  {id:'m100',   name:'100 Merges',         desc:'100 total merges performed',        icon:'💯'},
+  {id:'m500',   name:'500 Merges',         desc:'500 total merges performed',        icon:'🏆'},
 ];
 
 // ════════════════════════════════════════════════
@@ -303,7 +312,7 @@ function tone(f,type,dur,vol,delay=0){
 }
 function sfxDrop(){tone(180,'sine',.07,.06);tone(140,'triangle',.05,.03,.02);}
 function sfxMerge(lv){
-  const n=[220,247,261,294,330,370,415,440,494,523,587,659,740,784,880][Math.min(lv,14)];
+  const n=[261,294,330,370,440,494,523,659,784][Math.min(lv,8)];
   tone(n,'triangle',.2,.15);tone(n*1.25,'sine',.15,.07,.04);tone(n*2,'sine',.1,.04,.08);
 }
 function sfxAch(){[523,659,784,1047].forEach((f,i)=>tone(f,'triangle',.18,.12,i*.07));}
@@ -333,6 +342,19 @@ function drawCoin(ctx,x,y,r,C,alpha=1,glowing=false){
   bg.addColorStop(0,C.c1);bg.addColorStop(.28,C.c2);bg.addColorStop(.72,C.c3);
   bg.addColorStop(1,shade(C.c3,50));
   ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=bg;ctx.fill();
+
+
+  // Draw logo image (clipped to circle)
+  const logoImg = coinImages[C.id];
+  if(logoImg) {
+    const ls = r * 1.55;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(x, y, r * 0.82, 0, Math.PI*2); ctx.clip();
+    ctx.globalAlpha = alpha * 0.92;
+    ctx.drawImage(logoImg, x - ls/2, y - ls/2, ls, ls);
+    ctx.restore();
+    ctx.globalAlpha = alpha;
+  }
 
   // Rim
   ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
@@ -430,7 +452,7 @@ function stepPhysics(dt){
           const dv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
           if(dv<0){const imp=-(1+.1)*dv/mt;a.vx-=imp*ma*nx;a.vy-=imp*ma*ny;b.vx+=imp*mb*nx;b.vy+=imp*mb*ny;}
           // Merge check
-          if(!a.merging&&!b.merging&&a.cid===b.cid&&a.cid<14&&a.guard<=0&&b.guard<=0)
+          if(!a.merging&&!b.merging&&a.cid===b.cid&&a.cid<8&&a.guard<=0&&b.guard<=0)
             if(!mq.find(m=>m.a===a.id||m.b===a.id||m.a===b.id||m.b===b.id))
               mq.push({a:a.id,b:b.id,mx:(a.x+b.x)/2,my:(a.y+b.y)/2,cid:a.cid});
         }
@@ -464,7 +486,7 @@ function doMerges(){
     sfxMerge(nid);
     if(!unlocked.includes(nid)){unlocked.push(nid);localStorage.setItem('oryx_unl',JSON.stringify(unlocked));}
     checkAch(nid);
-    if(nid===14)onCore(m.mx,m.my);
+    if(nid===8)onCore(m.mx,m.my);
     updateUI();
   }
 }
@@ -492,7 +514,7 @@ function spawnBurst(x,y,C){
   }
 }
 function spawnRing(x,y,C){
-  rings.push({x,y,r:C.r*.4,maxR:COINS[Math.min(C.id+1,7)].r*3,
+  rings.push({x,y,r:C.r*.4,maxR:COINS[Math.min(C.id+1,8)].r*3,
     col:C.rim,alpha:.85,life:.55,maxL:.55});
 }
 function tickFX(dt){
@@ -655,7 +677,7 @@ function drop(){
 }
 
 function pickId(){
-  const w=[28,20,15,11,8,6,4,3,2,2,1,0,0,0,0];let r=Math.random()*w.reduce((a,b)=>a+b,0);
+  const w=[35,25,18,12,7,3,0,0,0];let r=Math.random()*w.reduce((a,b)=>a+b,0);
   for(let i=0;i<w.length;i++){r-=w[i];if(r<=0)return i;}return 0;
 }
 
@@ -670,11 +692,11 @@ function checkAch(nid){
     const d=ACHS.find(a=>a.id===id);if(d)showToast(d);
   };
   if(totMrg===1)  add('first');
-  if(nid>=5)      add('slpb');
-  if(nid>=8)      add('brain');
-  if(nid>=12)     add('moon');
-  if(nid>=13)     add('orynth');
-  if(nid===14)    add('alpie');
+  if(nid>=2)      add('brain');
+  if(nid>=5)      add('mango');
+  if(nid>=6)      add('moon');
+  if(nid>=7)      add('orynth');
+  if(nid===8)     add('alpie');
   if(totMrg>=100) add('m100');
   if(totMrg>=500) add('m500');
 }
@@ -692,18 +714,14 @@ function nextToast(){
 }
 
 // ════════════════════════════════════════════════
-// ORYNTH CORE
+// LEGENDARY MERGE — ALPIE
 // ════════════════════════════════════════════════
 function onCore(x,y){
   sfxCore();confetti();addShake(18);
   const fl=document.getElementById('flash');fl.style.background='#FFD700';fl.style.opacity='.6';
   setTimeout(()=>fl.style.opacity=0,200);
   floats.push({x,y:y-80,vy:-40,t:'α ALPIE LEGEND!',alpha:1,life:3,col:'#FFD700',sz:20});
-  if(!achieved.includes('core')){
-    achieved.push('core');sessAch.push('core');
-    localStorage.setItem('oryx_ach',JSON.stringify(achieved));
-    showToast(ACHS.find(a=>a.id==='core'));
-  }
+  // alpie achievement handled in checkAch
 }
 
 // ════════════════════════════════════════════════
@@ -744,11 +762,11 @@ function buildStrip(){
   COINS.forEach((C,i)=>{
     const wrap=document.createElement('div');wrap.className='stripSlot';
     wrap.style.opacity=unlocked.includes(i)?'1':'.22';
-    const cvs=document.createElement('canvas');cvs.width=34;cvs.height=34;
+    const cvs=document.createElement('canvas');cvs.width=46;cvs.height=46;
     const ctx=cvs.getContext('2d');
-    if(unlocked.includes(i))drawCoin(ctx,17,17,14,C);
-    else{ctx.beginPath();ctx.arc(17,17,13,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.12)';ctx.fill();
-      ctx.font='10px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillText('🔒',17,17);}
+    if(unlocked.includes(i))drawCoin(ctx,23,23,20,C);
+    else{ctx.beginPath();ctx.arc(23,23,18,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.12)';ctx.fill();
+      ctx.font='12px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillText('🔒',23,23);}
     const lbl=document.createElement('div');lbl.className='stripTicker';lbl.textContent=C.ticker;
     wrap.appendChild(cvs);wrap.appendChild(lbl);row.appendChild(wrap);
   });
@@ -800,13 +818,17 @@ function closeM(id){document.getElementById(id).classList.remove('show');}
 // START / INIT
 // ════════════════════════════════════════════════
 function startGame(){
+  if(!coinImages[0]) { preloadCoinImages(()=>_doStartGame()); return; }
+  _doStartGame();
+}
+function _doStartGame(){
   gCanvas=document.getElementById('gameCanvas');
   gCtx=gCanvas.getContext('2d');
   const wrap=document.getElementById('gameArea'),rect=wrap.getBoundingClientRect();
   GW=rect.width||Math.min(window.innerWidth,430);
   GH=rect.height||Math.floor(window.innerHeight*.62);
   gCanvas.width=GW;gCanvas.height=GH;
-  WARN_Y=Math.max(90,GH*.15);
+  WARN_Y=Math.max(88,GH*.14);
   buildBg();
 
   balls=[];parts=[];floats=[];rings=[];mq=[];
