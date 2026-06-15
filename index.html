@@ -232,24 +232,33 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0A0010;font-family:
 // COIN DATA  –  Orynth Ecosystem
 // ════════════════════════════════════════════════
 const COINS = [
-  {id:0,name:'SEED',       ticker:'SEED', pts:1,   r:16, c1:'#9EF5B8',c2:'#25C55A',c3:'#1A8A3A',rim:'#4EDE80',sym:'🌱',lore:'The beginning of every ecosystem.'},
-  {id:1,name:'ORYN',       ticker:'ORYN', pts:2,   r:22, c1:'#BAD8FD',c2:'#3B82F6',c3:'#1040B0',rim:'#60A5FA',sym:'Ø', lore:'First foundation layer.'},
-  {id:2,name:'ROVA',       ticker:'ROVA', pts:4,   r:29, c1:'#CEC4FD',c2:'#7C3AED',c3:'#4B1FA6',rim:'#A78BFA',sym:'R', lore:'Expanding the network.'},
-  {id:3,name:'CNOTE',      ticker:'CNOTE',pts:8,   r:36, c1:'#FBD0E8',c2:'#DB2777',c3:'#8B0F47',rim:'#F472B6',sym:'♪', lore:'Knowledge and culture on-chain.'},
-  {id:4,name:'AURELIS',    ticker:'AUREL',pts:16,  r:44, c1:'#FEF3C7',c2:'#D97706',c3:'#7A3606',rim:'#FCD34D',sym:'A', lore:'Where culture meets technology.'},
-  {id:5,name:'TERROVA',    ticker:'TERRA',pts:32,  r:52, c1:'#A7F3D0',c2:'#059669',c3:'#034D34',rim:'#34D399',sym:'T', lore:'Growing digital worlds.'},
-  {id:6,name:'BLACKSITE',  ticker:'BSITE',pts:64,  r:61, c1:'#C7D2FE',c2:'#4338CA',c3:'#1E1B6B',rim:'#818CF8',sym:'⬟',lore:'The experimental frontier.'},
-  {id:7,name:'ORYNTH CORE',ticker:'ORYX', pts:128, r:71, c1:'#FFF9C4',c2:'#D97706',c3:'#6B2F00',rim:'#FFD700',sym:'✸',lore:'The complete Orynth ecosystem.'},
+  // sorted: smallest → largest market cap in orynth.dev ecosystem
+  {id:0, name:'MANGAMINT',  ticker:'MMNT', pts:1,    r:15, c1:'#F3E8FF',c2:'#9333EA',c3:'#581C87',rim:'#C084FC',sym:'✦', lore:'Mint your manga on-chain.'},
+  {id:1, name:'IDLEN',      ticker:'IDLN', pts:2,    r:19, c1:'#CCFBF1',c2:'#0D9488',c3:'#134E4A',rim:'#2DD4BF',sym:'⚡',lore:'Monetize your AI idle time.'},
+  {id:2, name:'IDEAVO',     ticker:'IDVO', pts:4,    r:23, c1:'#DBEAFE',c2:'#2563EB',c3:'#1E3A8A',rim:'#93C5FD',sym:'I', lore:'Build apps with natural language.'},
+  {id:3, name:'ZAPDIGITS',  ticker:'ZAP',  pts:8,    r:27, c1:'#FEF9C3',c2:'#CA8A04',c3:'#713F12',rim:'#FDE047',sym:'Z', lore:'Marketing dashboards for agencies.'},
+  {id:4, name:'RELIQUEX',   ticker:'RQX',  pts:16,   r:31, c1:'#E0E7FF',c2:'#4338CA',c3:'#1E1B4B',rim:'#818CF8',sym:'R', lore:'Discover the next big thing in Web3.'},
+  {id:5, name:'SLOPE BOT',  ticker:'SLPB', pts:32,   r:35, c1:'#DCFCE7',c2:'#16A34A',c3:'#14532D',rim:'#4ADE80',sym:'S', lore:'Automated trading on Solana.'},
+  {id:6, name:'SYLLABY',    ticker:'SYLLA',pts:64,   r:40, c1:'#EDE9FE',c2:'#7C3AED',c3:'#4C1D95',rim:'#A78BFA',sym:'▶',lore:'AI studio for viral video creation.'},
+  {id:7, name:'AVATAR UI',  ticker:'AUI',  pts:128,  r:45, c1:'#E0F2FE',c2:'#0284C7',c3:'#0C4A6E',rim:'#38BDF8',sym:'A', lore:'Next-gen AI coexistence interface.'},
+  {id:8, name:'BRAIN',      ticker:'BRAIN',pts:256,  r:50, c1:'#FFF7ED',c2:'#EA580C',c3:'#7C2D12',rim:'#FB923C',sym:'B', lore:'Blockchain meets intelligence.'},
+  {id:9, name:'AVOCADO AI', ticker:'AVO',  pts:512,  r:55, c1:'#ECFDF5',c2:'#059669',c3:'#064E3B',rim:'#34D399',sym:'🥑',lore:'Ship client-ready ads in minutes.'},
+  {id:10,name:'MAGTAPP',    ticker:'MGT',  pts:1024, r:60, c1:'#FDF2F8',c2:'#DB2777',c3:'#831843',rim:'#F472B6',sym:'T', lore:'Borderless crypto payments for all.'},
+  {id:11,name:'MANGANOW',   ticker:'MGN',  pts:2048, r:65, c1:'#FFF1F2',c2:'#E11D48',c3:'#881337',rim:'#FB7185',sym:'M', lore:'Text to Manga in minutes.'},
+  {id:12,name:'MOONSHIFT',  ticker:'MNSHFT',pts:4096,r:70, c1:'#EEF2FF',c2:'#4F46E5',c3:'#312E81',rim:'#A5B4FC',sym:'🌙',lore:'Shift your trajectory to the moon.'},
+  {id:13,name:'ORYNTH',     ticker:'ORY',  pts:8192, r:76, c1:'#F5F3FF',c2:'#7C3AED',c3:'#3B0764',rim:'#DDA0FF',sym:'Ø', lore:'The launch platform for builders.'},
+  {id:14,name:'ALPIE',      ticker:'PIE',  pts:16384,r:82, c1:'#FEF3C7',c2:'#D97706',c3:'#6B2F00',rim:'#FFD700',sym:'α', lore:'The premier AI workspace. Peak of the ecosystem.'},
 ];
 
 const ACHS = [
-  {id:'first',name:'First Merge',     desc:'Complete your first merge',  icon:'🔗'},
-  {id:'rova', name:'ROVA Discovered', desc:'Unlock ROVA token',          icon:'🌐'},
-  {id:'aurel',name:'AURELIS Unlocked',desc:'Reach AURELIS',              icon:'⭐'},
-  {id:'bsite',name:'BLACKSITE Found', desc:'Discover BLACKSITE',         icon:'🔮'},
-  {id:'core', name:'ORYNTH CORE!',    desc:'Create the legendary core',  icon:'✸'},
-  {id:'m100', name:'100 Merges',      desc:'100 total merges performed', icon:'💯'},
-  {id:'m500', name:'500 Merges',      desc:'500 total merges performed', icon:'🏆'},
+  {id:'first',  name:'First Merge',       desc:'Complete your first merge',     icon:'🔗'},
+  {id:'slpb',   name:'Slope Bot Found',   desc:'Unlock SLOPE BOT token',        icon:'📈'},
+  {id:'brain',  name:'Brain Power',       desc:'Reach BRAIN token',             icon:'🧠'},
+  {id:'moon',   name:'Moonshift!',        desc:'Discover MOONSHIFT',            icon:'🌙'},
+  {id:'orynth', name:'Orynth Reached',    desc:'Reach ORYNTH token',            icon:'Ø'},
+  {id:'alpie',  name:'ALPIE LEGEND!',     desc:'Create the legendary ALPIE',    icon:'α'},
+  {id:'m100',   name:'100 Merges',        desc:'100 total merges performed',    icon:'💯'},
+  {id:'m500',   name:'500 Merges',        desc:'500 total merges performed',    icon:'🏆'},
 ];
 
 // ════════════════════════════════════════════════
@@ -294,7 +303,7 @@ function tone(f,type,dur,vol,delay=0){
 }
 function sfxDrop(){tone(180,'sine',.07,.06);tone(140,'triangle',.05,.03,.02);}
 function sfxMerge(lv){
-  const n=[261,294,330,370,440,494,523,659][Math.min(lv,7)];
+  const n=[220,247,261,294,330,370,415,440,494,523,587,659,740,784,880][Math.min(lv,14)];
   tone(n,'triangle',.2,.15);tone(n*1.25,'sine',.15,.07,.04);tone(n*2,'sine',.1,.04,.08);
 }
 function sfxAch(){[523,659,784,1047].forEach((f,i)=>tone(f,'triangle',.18,.12,i*.07));}
@@ -421,7 +430,7 @@ function stepPhysics(dt){
           const dv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;
           if(dv<0){const imp=-(1+.1)*dv/mt;a.vx-=imp*ma*nx;a.vy-=imp*ma*ny;b.vx+=imp*mb*nx;b.vy+=imp*mb*ny;}
           // Merge check
-          if(!a.merging&&!b.merging&&a.cid===b.cid&&a.cid<7&&a.guard<=0&&b.guard<=0)
+          if(!a.merging&&!b.merging&&a.cid===b.cid&&a.cid<14&&a.guard<=0&&b.guard<=0)
             if(!mq.find(m=>m.a===a.id||m.b===a.id||m.a===b.id||m.b===b.id))
               mq.push({a:a.id,b:b.id,mx:(a.x+b.x)/2,my:(a.y+b.y)/2,cid:a.cid});
         }
@@ -455,7 +464,7 @@ function doMerges(){
     sfxMerge(nid);
     if(!unlocked.includes(nid)){unlocked.push(nid);localStorage.setItem('oryx_unl',JSON.stringify(unlocked));}
     checkAch(nid);
-    if(nid===7)onCore(m.mx,m.my);
+    if(nid===14)onCore(m.mx,m.my);
     updateUI();
   }
 }
@@ -646,7 +655,7 @@ function drop(){
 }
 
 function pickId(){
-  const w=[42,27,15,9,5,2,0,0];let r=Math.random()*w.reduce((a,b)=>a+b,0);
+  const w=[28,20,15,11,8,6,4,3,2,2,1,0,0,0,0];let r=Math.random()*w.reduce((a,b)=>a+b,0);
   for(let i=0;i<w.length;i++){r-=w[i];if(r<=0)return i;}return 0;
 }
 
@@ -661,9 +670,11 @@ function checkAch(nid){
     const d=ACHS.find(a=>a.id===id);if(d)showToast(d);
   };
   if(totMrg===1)  add('first');
-  if(nid>=2)      add('rova');
-  if(nid>=4)      add('aurel');
-  if(nid>=6)      add('bsite');
+  if(nid>=5)      add('slpb');
+  if(nid>=8)      add('brain');
+  if(nid>=12)     add('moon');
+  if(nid>=13)     add('orynth');
+  if(nid===14)    add('alpie');
   if(totMrg>=100) add('m100');
   if(totMrg>=500) add('m500');
 }
@@ -687,7 +698,7 @@ function onCore(x,y){
   sfxCore();confetti();addShake(18);
   const fl=document.getElementById('flash');fl.style.background='#FFD700';fl.style.opacity='.6';
   setTimeout(()=>fl.style.opacity=0,200);
-  floats.push({x,y:y-80,vy:-40,t:'✸ ORYNTH CORE!',alpha:1,life:3,col:'#FFD700',sz:20});
+  floats.push({x,y:y-80,vy:-40,t:'α ALPIE LEGEND!',alpha:1,life:3,col:'#FFD700',sz:20});
   if(!achieved.includes('core')){
     achieved.push('core');sessAch.push('core');
     localStorage.setItem('oryx_ach',JSON.stringify(achieved));
@@ -733,11 +744,11 @@ function buildStrip(){
   COINS.forEach((C,i)=>{
     const wrap=document.createElement('div');wrap.className='stripSlot';
     wrap.style.opacity=unlocked.includes(i)?'1':'.22';
-    const cvs=document.createElement('canvas');cvs.width=46;cvs.height=46;
+    const cvs=document.createElement('canvas');cvs.width=34;cvs.height=34;
     const ctx=cvs.getContext('2d');
-    if(unlocked.includes(i))drawCoin(ctx,23,23,20,C);
-    else{ctx.beginPath();ctx.arc(23,23,18,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.12)';ctx.fill();
-      ctx.font='12px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillText('🔒',23,23);}
+    if(unlocked.includes(i))drawCoin(ctx,17,17,14,C);
+    else{ctx.beginPath();ctx.arc(17,17,13,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.12)';ctx.fill();
+      ctx.font='10px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='rgba(255,255,255,.25)';ctx.fillText('🔒',17,17);}
     const lbl=document.createElement('div');lbl.className='stripTicker';lbl.textContent=C.ticker;
     wrap.appendChild(cvs);wrap.appendChild(lbl);row.appendChild(wrap);
   });
@@ -795,7 +806,7 @@ function startGame(){
   GW=rect.width||Math.min(window.innerWidth,430);
   GH=rect.height||Math.floor(window.innerHeight*.62);
   gCanvas.width=GW;gCanvas.height=GH;
-  WARN_Y=Math.max(64,GH*.12);
+  WARN_Y=Math.max(90,GH*.15);
   buildBg();
 
   balls=[];parts=[];floats=[];rings=[];mq=[];
