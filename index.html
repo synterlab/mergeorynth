@@ -128,7 +128,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#06000F;font-family:
 .stripTicker{font-size:6px;font-weight:800;letter-spacing:.5px;opacity:.45;text-align:center}
 
 /* ══ MODALS (shared) ════════════════════════════════════════ */
-.overlay{position:fixed;inset:0;z-index:100;display:none;align-items:flex-end;justify-content:center}
+.overlay{position:fixed;inset:0;z-index:1001;display:none;align-items:flex-end;justify-content:center}
 .overlay.show{display:flex;animation:ovIn .18s ease}
 @keyframes ovIn{from{opacity:0}to{opacity:1}}
 .ovBg{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(14px)}
@@ -651,6 +651,13 @@ let shakeX=0,shakeY=0,shakePow=0;
 let rafId=null,lastT=0,sessAch=[];
 let gCanvas,gCtx,GW,GH,WARN_Y;
 let bgImage=null; // offscreen bg
+let gameMascotImg=null; // game background mascot
+function preloadMascot(cb){
+  const img=new Image();
+  img.onload=()=>{gameMascotImg=img;cb&&cb();};
+  img.onerror=()=>{cb&&cb();};
+  img.src='game-logo.png';
+}
 
 // ════════════════════════════════════════════════
 // AUDIO
@@ -764,20 +771,55 @@ function shade(h,a){
 function buildBg(){
   const oc=document.createElement('canvas');oc.width=GW;oc.height=GH;
   const c=oc.getContext('2d');
+  // Jungle/stone gradient background
   const gr=c.createLinearGradient(0,0,0,GH);
-  gr.addColorStop(0,'#9500D5');gr.addColorStop(.5,'#7000AA');gr.addColorStop(1,'#550088');
+  gr.addColorStop(0,'#1A0F00');gr.addColorStop(.35,'#2B1A05');gr.addColorStop(.7,'#1E1000');gr.addColorStop(1,'#0E0800');
   c.fillStyle=gr;c.fillRect(0,0,GW,GH);
-  const ds=54,dh=ds*.55;
-  c.strokeStyle='rgba(255,255,255,.1)';c.lineWidth=.9;
-  c.fillStyle='rgba(255,255,255,.045)';
-  for(let row=-1;row<GH/dh+2;row++){
-    for(let col=-1;col<GW/(ds*.86)+2;col++){
-      const cx=(row%2===0)?col*ds*.86:col*ds*.86+ds*.43;
-      const cy=row*dh;
-      c.beginPath();c.moveTo(cx,cy-dh);c.lineTo(cx+ds*.43,cy);
-      c.lineTo(cx,cy+dh);c.lineTo(cx-ds*.43,cy);c.closePath();
-      c.fill();c.stroke();
+  // Stone brick pattern
+  const bw=52,bh=28;
+  c.strokeStyle='rgba(255,200,100,.07)';c.lineWidth=1;
+  for(let row=0;row<GH/bh+2;row++){
+    const offset=(row%2===0)?0:bw/2;
+    for(let col=-1;col<GW/bw+2;col++){
+      const x=col*bw+offset,y=row*bh;
+      c.strokeRect(x,y,bw,bh);
+      // Subtle stone fill variation
+      const shade=.018+Math.sin(row*7+col*13)*.012;
+      c.fillStyle=`rgba(255,200,80,${shade})`;
+      c.fillRect(x+1,y+1,bw-2,bh-2);
     }
+  }
+  // Ambient warm center glow
+  const amb=c.createRadialGradient(GW/2,GH*.55,0,GW/2,GH*.55,GW*.7);
+  amb.addColorStop(0,'rgba(200,100,0,.15)');amb.addColorStop(1,'transparent');
+  c.fillStyle=amb;c.fillRect(0,0,GW,GH);
+  // Green jungle side strips
+  const lg=c.createLinearGradient(0,0,GW*.22,0);
+  lg.addColorStop(0,'rgba(20,80,10,.55)');lg.addColorStop(1,'transparent');
+  c.fillStyle=lg;c.fillRect(0,0,GW*.22,GH);
+  const rg=c.createLinearGradient(GW,0,GW*.78,0);
+  rg.addColorStop(0,'rgba(20,80,10,.55)');rg.addColorStop(1,'transparent');
+  c.fillStyle=rg;c.fillRect(GW*.78,0,GW*.22,GH);
+  // Draw mascot (monkey+tiki) centered and faded
+  if(gameMascotImg){
+    const mw=Math.min(GW*.65,220),mh=mw;
+    const mx=(GW-mw)/2,my=(GH-mh)/2-GH*.04;
+    c.save();
+    c.globalAlpha=.11;
+    // Rounded clip
+    const r=mw*.18;
+    c.beginPath();
+    c.moveTo(mx+r,my);c.lineTo(mx+mw-r,my);c.quadraticCurveTo(mx+mw,my,mx+mw,my+r);
+    c.lineTo(mx+mw,my+mh-r);c.quadraticCurveTo(mx+mw,my+mh,mx+mw-r,my+mh);
+    c.lineTo(mx+r,my+mh);c.quadraticCurveTo(mx,my+mh,mx,my+mh-r);
+    c.lineTo(mx,my+r);c.quadraticCurveTo(mx,my,mx+r,my);
+    c.closePath();c.clip();
+    c.drawImage(gameMascotImg,mx,my,mw,mh);
+    c.restore();
+    // Subtle glow ring around mascot
+    const gl=c.createRadialGradient(GW/2,GH/2,mw*.25,GW/2,GH/2,mw*.6);
+    gl.addColorStop(0,'rgba(217,119,6,.07)');gl.addColorStop(1,'transparent');
+    c.fillStyle=gl;c.fillRect(0,0,GW,GH);
   }
   bgImage=oc;
 }
@@ -1209,7 +1251,11 @@ function closeM(id){document.getElementById(id).classList.remove('show');}
 // START / INIT
 // ════════════════════════════════════════════════
 function startGame(){
-  if(!coinImages[0]) { preloadCoinImages(()=>_doStartGame()); return; }
+  if(!coinImages[0]){
+    preloadMascot(()=>preloadCoinImages(()=>_doStartGame()));
+    return;
+  }
+  if(!gameMascotImg){preloadMascot(()=>_doStartGame());return;}
   _doStartGame();
 }
 function _doStartGame(){
@@ -1272,7 +1318,7 @@ function init(){
     requestAnimationFrame(()=>requestAnimationFrame(startGame));
   } else {
     // Show login, preload images in background
-    preloadCoinImages(()=>{});
+    preloadMascot(()=>preloadCoinImages(()=>{}));
     requestAnimationFrame(()=>requestAnimationFrame(startGame));
   }
 }
